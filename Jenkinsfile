@@ -1,10 +1,9 @@
-#!/usr/bin/env groovy
-
 pipeline {
 
-    agent {
-        label 'docker-slave'
-    }
+   agent any
+    
+    tools {maven 'maven'}
+    
     stages {
         stage('Compile') {
             steps {
@@ -27,11 +26,6 @@ pipeline {
                 }
             }
         }
-        stage('Install') {
-            steps {
-                script {
-                    sh "mvn install"
-                }
             }
         }
     }
